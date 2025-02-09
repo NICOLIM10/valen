@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SURVEY FOR SCHOOL</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+        body {
+            font-family: 'Pacifico', cursive;
+            text-align: center;
+            background-color: #ffe6f2;
+            position: relative;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 2.5em;
+            margin-top: 50px;
+        }
+
+        button {
+            background-color: #ff66b2;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 50px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff3385;
+            transform: scale(1.1);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .flower, .heart, .sad-face {
+            font-size: 80px;
+            margin-top: 20px;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+        }
+
+        .flower {
+            animation-name: grow;
+            animation-duration: 4s;
+            animation-iteration-count: 1;
+        }
+
+        .heart {
+            color: #ff4081;
+            animation-name: beat;
+        }
+
+        .sad-face {
+            color: #6c757d;
+            animation-name: fade;
+        }
+
+        .phrase {
+            font-size: 1.5em;
+            color: #d63384;
+            margin-top: 20px;
+        }
+
+        .love-letter {
+            font-size: 1.2em;
+            color: #333;
+            margin-top: 20px;
+            padding: 20px;
+            border: 2px solid #d63384;
+            border-radius: 10px;
+            background-color: #fff;
+            display: inline-block;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .sad-photo {
+            margin-top: 20px;
+            width: 300px;
+            height: auto;
+        }
+
+        @keyframes grow {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        @keyframes fade {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Will you be my Valentine? 💖</h1>
+    <button id="yesButton" onclick="showResponse('yes')">Yes</button>
+    <button id="noButton" onclick="showResponse('no')">No</button>
+
+    <div id="response" class="hidden">
+        <img id="flower" class="flower hidden" src="bunny.gif" alt="Rose" width="300" height="300">
+        <div id="heart" class="heart hidden"></div>
+        <div id="sad-face" class="sad-face hidden"></div>
+        <div id="phrase" class="phrase hidden">I can write you a letter!</div>
+        <div id="love-letter" class="love-letter">
+            Dear BEA,<br><br>
+            Roses are red, violets are blue,<br>
+            My heart is full of love for you.<br>
+            On this special day, I want to say,<br>
+            Will you be my Valentine and make my day?<br><br>
+            With love,<br>
+            NICO LIM
+        </div>
+        <img id="sadPhoto" class="sad-photo hidden" src="sad.gif" alt="Sad Image">
+    </div>
+
+    <script>
+        function showResponse(answer) {
+            document.getElementById('response').classList.remove('hidden');
+            document.getElementById('yesButton').classList.add('hidden');
+            document.getElementById('noButton').classList.add('hidden');
+
+            if (answer === 'yes') {
+                document.getElementById('flower').classList.remove('hidden');
+                document.getElementById('heart').classList.remove('hidden');
+                document.getElementById('phrase').classList.remove('hidden');
+                document.getElementById('love-letter').classList.remove('hidden');
+                document.getElementById('sad-face').classList.add('hidden');
+                document.getElementById('sadPhoto').classList.add('hidden');
+            } else {
+                document.getElementById('flower').classList.add('hidden');
+                document.getElementById('heart').classList.add('hidden');
+                document.getElementById('sad-face').classList.remove('hidden');
+                document.getElementById('phrase').classList.add('hidden');
+                document.getElementById('sadPhoto').classList.remove('hidden');
+                
+                // Remove the love letter from the DOM
+                let loveLetter = document.getElementById('love-letter');
+                if (loveLetter) {
+                    loveLetter.remove();
+                }
+            }
+        }
+    </script>
+</body>
+</html>
